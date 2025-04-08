@@ -16,7 +16,7 @@ import math # Keep for potential future use
 logging.basicConfig(level=logging.INFO)
 
 # Initialize Flask app
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder=".")
 #CORS(app)
 
 # --- Google Generative AI Configuration ---
