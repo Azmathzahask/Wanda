@@ -16,7 +16,7 @@ import math # Keep for potential future use
 logging.basicConfig(level=logging.INFO)
 
 # Initialize Flask app
-app = Flask(__name__, template_folder=".")
+app = Flask(__name__, template_folder="templates")
 #CORS(app)
 
 # --- Google Generative AI Configuration ---
@@ -100,9 +100,9 @@ except Exception as e:
 # These should be correct as provided previously
 @app.route("/")
 def index():
-   # if not os.path.exists(os.path.join(app.template_folder, 'index.html')):
-    #     logging.error("index.html not found in templates folder!")
-    #     return "Error: Frontend template not found.", 404
+    if not os.path.exists(os.path.join(app.template_folder, 'index.html')):
+         logging.error("index.html not found in templates folder!")
+         return "Error: Frontend template not found.", 404
     return render_template("index.html")
 
 @app.route("/chat", methods=["POST"])
